@@ -1,0 +1,721 @@
+mixin socials(addClass)
+  - var classes = ["list", "list--social"];
+  - if (typeof addClass !== "undefined")
+    - classes.push(addClass);
+
+  ul&attributes({class: classes.join(" ")})
+    li
+      a.list__link(href="http://" target="_blank")
+        span.icon.icon--vk
+    li
+      a.list__link(href="http://" target="_blank")
+        span.icon.icon--fb
+    li
+      a.list__link(href="http://" target="_blank")
+        span.icon.icon--tw
+    li
+      a.list__link(href="http://" target="_blank")
+        span.icon.icon--gp
+
+
+block vars
+  - var isCompiled = false
+
+- var htmlAttrs = {class:'no-js', lang:'en'}
+//- if (isCompiled)
+  //- htmlAttrs.manifest = "manifest.appcache"
+
+doctype html
+//[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]
+//[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]
+//[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]
+
+| <!--[if gt IE 8]><!-->
+html&attributes(htmlAttrs)
+  | <!--<![endif]-->
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    block title
+      title Комионлайн Layout
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+    meta(name="HandheldFriendly", content="True")
+    meta(name="MobileOptimized", content="768")
+    meta(http-equiv="cleartype", content="on")
+    link(type="text/plain", rel="author", href="humans.txt")
+    link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+    link(rel="icon", href="/favicon.ico", type="image/x-icon")
+    // link(rel="apple-touch-startup-image", href="icon/apple-touch-icon-144x144.png")
+    link(rel="apple-touch-icon", href="icon/apple-touch-icon.png")
+    // link(rel="apple-touch-icon", href="icon/apple-touch-icon-57x57.png", sizes="57x57")
+    // link(rel="apple-touch-icon", href="icon/apple-touch-icon-72x72.png", sizes="72x72")
+    // link(rel="apple-touch-icon", href="icon/apple-touch-icon-114x114.png", sizes="114x114")
+    // link(rel="apple-touch-icon", href="icon/apple-touch-icon-120x120.png", sizes="120x120")
+    // link(rel="apple-touch-icon", href="icon/apple-touch-icon-144x144.png", sizes="144x144")
+
+    //- | <!--[if lt IE 9]>
+    //- script(src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js")
+    //- | <![endif]-->
+
+    block styles
+      link(rel='stylesheet', href='css/normalize.css')
+      link(rel='stylesheet', href='css/bp-begin.css')
+      link(rel='stylesheet', href='css/main.css')
+      link(rel='stylesheet', href='css/bp-tail.css')
+
+    block scripts_top
+      //- script(src='js/vendor/modernizr-2.8.3.min.js')
+  body
+    <!--[if lt IE 8]>
+    .container.container--browsehappy
+      p.browsehappy
+        | You are using an <strong>outdated</strong> browser.
+        | Please <a href="http://browsehappy.com/">upgrade your browser</a>
+        | to improve your experience.
+    <![endif]-->
+
+    .page
+      block content
+        .header
+          .main-panel
+            .container
+              .logo
+                a(href="http://")
+                  img(src="img/logo.png", alt="Комионлайн")
+
+              h1 Комионлайн
+              .dropdown
+                a.activator.activator--menu(data-activator-target=".header")
+                  span.icon.icon--menu
+              h2.header-category Новости
+
+              ul.list.list--submenu
+                li
+                  a.list__link(href="http://") Агентство
+                li
+                  a.list__link(href="http://") Сервисы
+                li
+                  a.list__link(href="http://") Команда
+
+              +socials("list--social--header")
+
+              .search
+                form(id="form-search", method="get", action="/search", class="search___form")
+                  label.search__label
+                    .icon.icon--search
+                    input(type="text", name="text", id="search_text", placeholder="Поиск", class="search__input")
+
+          .dropdown--menu(role='menu')
+            .container
+              ul.list.list--menu
+                li
+                  //- a.list__link(tabindex='-1', href='#') 
+                  span.list__link(tabindex='-1', href='#') 
+                    .icon.icon--news
+                    span.list__sign
+                      | Новости
+                li
+                  a.list__link(tabindex='-1', href='#')
+                    .icon.icon--reports
+                    span.list__sign
+                      | Репортажи
+                li
+                  a.list__link(tabindex='-1', href='#')
+                    .icon.icon--overviews
+                    span.list__sign
+                      | Обзоры
+                li
+                  a.list__link(tabindex='-1', href='#')
+                    .icon.icon--videoview
+                    span.list__sign
+                      | Видеовзгляд
+                li
+                  a.list__link(tabindex='-1', href='#')
+                    .icon.icon--authorview
+                    span.list__sign
+                      | Авторский взгляд
+                li
+                  a.list__link(tabindex='-1', href='#')
+                    .icon.icon--photoview
+                    span.list__sign
+                      | Фотовзгляд
+                li
+                  a.list__link(tabindex='-1', href='#')
+                    .icon.icon--instructions
+                    span.list__sign
+                      | Инструкции
+                    span.list__amount
+                      | +3
+                li
+                  a.list__link(tabindex='-1', href='#')
+                    .icon.icon--archive
+                    span.list__sign
+                      | Архив
+
+        .content
+          .container
+            ul.list.list--types
+              li
+                a.list__link(href="http://") Все 
+              li
+                a.list__link.active(href="http://") Комментируемые
+              li
+                a.list__link(href="http://") Популярные
+            .posts
+              .post.post--grid2
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/01_wide.jpg", alt="", class="post__image")
+                  .post__category.green
+                    span.post__category__inner
+                      | Культура
+                  h3.post__title
+                    a(href="http://") На&nbsp;заправках в&nbsp;Коми подорожал бензин
+                  .post__description
+                    | Комистат фиксирует еженедельное повышение цен на&nbsp;топливо
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/02.jpg", alt="", class="post__image")
+                  .post__category.blue
+                    span.post__category__inner
+                      | Культура
+                  h3.post__title
+                    a(href="http://") Уральцы стали чаще звонить по&nbsp;межгороду
+                  .post__description
+                    | &laquo;МегаФон&raquo; зафиксировал резкий рост междугородних звонков у&nbsp;абонентов оператора на&nbsp;Урале.
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/03.jpg", alt="", class="post__image")
+                  h3.post__title
+                    a(href="http://") Россельхозбанк утвердил программу развития региональной
+                  .post__description
+                    | Правление &laquo;Россельхозбанка&raquo; утвердило программу развития до&nbsp;2020 года
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/07.jpg", alt="", class="post__image")
+                  .post__category.green
+                    span.post__category__inner
+                      | Культура
+                  h3.post__title
+                    a(href="http://") Половины россиян недовольны системой здравоохранения
+                  .post__description
+                    | Правление &laquo;Россельхозбанка&raquo; утвердило программу
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1.post--special
+                .post__container
+                  h3.post__title
+                    a(href="http://") Удерживать детей от&nbsp;побегов в&nbsp;лагере &laquo;Чайка&raquo; будут развлечениями
+                  .post__description
+                    | Заместитель прокурора Сыктывкара утвердил обвинительное заключение по&nbsp;уголовно делу в&nbsp;отношении троих местных жителей роих местных
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/08.jpg", alt="", class="post__image")
+                  .post__category.green
+                    span.post__category__inner
+                      | Криминал
+                  h3.post__title
+                    a(href="http://") В&nbsp;больнице Усинска приостановили вакцинацию детей
+                  .post__description
+                    | Правление &laquo;Россельхозбанка&raquo; утвердило программу
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+        
+              .post.post--grid1.post--fullheightimage
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/09.jpg", alt="", class="post__image")
+                  .post__category.purple
+                    span.post__category__inner
+                      | Интервью
+                  h3.post__title
+                    a(href="http://") Анатолий Букин
+                  .post__description
+                    a(href="http://") &laquo;Мы&nbsp;активизировали движение клиентов&raquo;
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+            .posts-announces
+              h2.header--posts Хиты
+              ul.list.list--previews
+                li
+                  img.list__preview(src="img/content/annncs/01.jpg", alt="")
+                  a.list__link(href="http://") В&nbsp;Прилузском районе в&nbsp;ДТП с&nbsp;двумя легковушками погиб водитель &laquo;четверки&raquo;
+                li
+                  img.list__preview(src="img/content/annncs/02.jpg", alt="")
+                  a.list__link.active(href="http://") Июнь 2014 стал самым теплым за&nbsp;всю историю наблюдений, а&nbsp;Коми осталась в&nbsp;стороне от&nbsp;тенденции
+                li
+                  img.list__preview(src="img/content/annncs/03.png", alt="")
+                  a.list__link(href="http://") Сбербанк повысил ставки по&nbsp;вкладам и&nbsp;сберегательны сертификатам в&nbsp;рублях для физических лиц
+
+            .banner
+              .banner__small
+              .banner__medium
+                a(href="http://")
+                  img(src="img/content/banner/01/medium.jpg", alt="")
+              .banner__wide
+                a(href="http://")
+                  img(src="img/content/banner/01/wide.jpg", alt="")
+
+            .posts
+              .post.post--grid1.post--fullheightimage
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/05.jpg", alt="", class="post__image")
+                  .post__category.orange
+                    span.post__category__inner
+                      | Конференция
+                  .post__description
+                    a(href="http://")
+                      | &laquo;Оплата электроэнергии на&nbsp;дворовые и&nbsp;общедомовые нужды&raquo;
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid2
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/06.jpg", alt="", class="post__image")
+                  .post__category.cyan
+                    span.post__category__inner
+                      | Общество
+                  h3.post__title
+                    a(href="http://")
+                      | Без господдержки кожевенное производство в&nbsp;открыться не&nbsp;сможет
+                  .post__description
+                    | Министр сельского хозяйства России Николай Федоров во&nbsp;время своего недавнего приезда в&nbsp;Коми высказался
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1.post--special.post--special-blue
+                .post__container
+                  h3.post__title
+                    a(href="http://") Удерживать детей от&nbsp;побегов в&nbsp;лагере &laquo;Чайка&raquo; будут развлечениями
+                  .post__description
+                    | Заместитель прокурора Сыктывкара утвердил обвинительное заключение по&nbsp;уголовно делу в&nbsp;отношении троих местных жителей роих местных
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/10.jpg", alt="", class="post__image")
+                  .post__category.cyan
+                    span.post__category__inner
+                      | Общество
+                  h3.post__title
+                    a(href="http://") В&nbsp;Коми воскресят экстремальные виды спорта
+                  .post__description
+                    | Создавать условия для занятий экстремальными видами спорта будут молодые люди из&nbsp;объединения &laquo;МИГ&raquo;
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/11.jpg", alt="", class="post__image")
+                  h3.post__title
+                    a(href="http://") Деревню в&nbsp;Сысольском районе терроризируют кошки
+                  .post__description
+                    | Жители деревни Семановцы Сысольского района страдают от&nbsp;нашествия кошек
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid2
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/12.jpg", alt="", class="post__image")
+                  h3.post__title
+                    a(href="http://") Более девяти часов туристы не&nbsp;могут вылететь из&nbsp;Сыктывкара в&nbsp;Турцию
+                  .post__description
+                    | Из-за технической неисправности самолета авиакомпании Nordwind рейс Сыктывкар&nbsp;&mdash; Анталия постоянно переносили
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+            .posts-announces
+              h2.header--posts Стенограф
+                a.link--news(href="http://", target="_blank") Рассказать новость
+              ul.list.list--previews
+                li
+                  img.list__preview(src="img/content/annncs/04.jpg", alt="")
+                  a.list__link(href="http://") Град в&nbsp;Печоре
+                  .link__author
+                    | ValeriyCh
+                li
+                  img.list__preview(src="img/content/annncs/05.jpg", alt="")
+                  a.list__link.active(href="http://") Фотовзгляд: надышали
+                  .link__author
+                    | Владилен
+                li
+                  img.list__preview(src="img/content/annncs/06.jpg", alt="")
+                  a.list__link(href="http://") Наглядное пособие для будущих водителей
+                  .link__author
+                    | Судебный пристав
+
+            .posts
+              .post.post--grid1
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/07.jpg", alt="", class="post__image")
+                  .post__category.green
+                    span.post__category__inner
+                      | Культура
+                  h3.post__title
+                    a(href="http://") Половины россиян недовольны системой здравоохранения
+                  .post__description
+                    | Правление &laquo;Россельхозбанка&raquo; утвердило программу
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1.post--special
+                .post__container
+                  h3.post__title
+                    a(href="http://") Удерживать детей от&nbsp;побегов в&nbsp;лагере &laquo;Чайка&raquo; будут развлечениями
+                  .post__description
+                    | Заместитель прокурора Сыктывкара утвердил обвинительное заключение по&nbsp;уголовно делу в&nbsp;отношении троих местных жителей роих местных
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+              .post.post--grid1
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/08.jpg", alt="", class="post__image")
+                  .post__category.green
+                    span.post__category__inner
+                      | Криминал
+                  h3.post__title
+                    a(href="http://") В&nbsp;больнице Усинска приостановили вакцинацию детей
+                  .post__description
+                    | Правление &laquo;Россельхозбанка&raquo; утвердило программу
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+        
+              .post.post--grid1.post--fullheightimage
+                .post__container
+                  .post__image-container
+                    .post__image-container--inner
+                      img(src="img/content/post/09.jpg", alt="", class="post__image")
+                  .post__category.purple
+                    span.post__category__inner
+                      | Интервью
+                  h3.post__title
+                    a(href="http://") Анатолий Букин
+                  .post__description
+                    a(href="http://") &laquo;Мы&nbsp;активизировали движение клиентов&raquo;
+                  .post__links
+                    ul.list.list--post-links
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--views
+                          | 328
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--comments
+                          | 26
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--video
+                      li
+                        a.list__link(href="http://")
+                          span.icon.icon--photo
+
+            .list.list--pager
+              li
+                a.list__link.list__link--prev(href="http://") 17 сентября
+              li
+                a.list__link.list__link--next(href="http://") 17 сентября
+
+      .footer
+        .container
+          ul.list.list--links
+            li.link--1
+              a.list__link(href="http://") Комионлайн
+            li.link--2
+              a.list__link(href="http://") Лента
+            li
+              a.list__link(href="http://") Сервисы
+            li
+              a.list__link(href="http://") Команда
+
+          +socials()
+
+          p.copyright
+            | &copy;&nbsp;ООО &laquo;МИР&raquo;, 2006&ndash;2013.
+          p.remark
+            | При использовании материалов сайта обязательна ссылка на&nbsp;источник.
+
+    //script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    //script window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')
+    script(src='js/vendor/jquerycopyforlocallook.js')
+
+    block scripts_bottom
+      script(src='js/vendor/plugins.js')
+      script(src='js/vendor/jquery.ba-throttle-debounce.min.js')
+      script(src='js/vendor/fastclick.js')
+      script(src='js/main.js')
+
+      //- Google Analytics: change UA-XXXXX-X to be your site's ID.
+      //-
+        script
+          (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+          function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+          e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+          e.src='//www.google-analytics.com/analytics.js';
+          r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+          ga('create','UA-XXXXX-X');ga('send','pageview');

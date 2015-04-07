@@ -1,0 +1,52 @@
+@import "lib/lesshat/lesshat-prefixed.less";
+@import "lib/constants.less";
+@import "lib/mixtures.less";
+
+.container {
+	width:1000px;
+}
+.list {
+	&--submenu {
+		left:500%;
+	}
+	&--types {
+		margin-left:-20px;
+		padding-left:0;
+		left:50%;
+		right:auto;
+		width:auto;
+	}
+	&--social {
+		&--header {
+			display:block;
+			.active & {
+				display:none;
+			}
+		}
+	}
+	&--post-links {
+		> li {
+			padding-left:10px;
+			&:first-child {
+				padding-left:0;
+			}
+		}
+	}
+}
+.post {
+	width:25%;
+	&--grid2 {
+		width:50%;
+	}
+	&--grid3 {
+		width:75%;
+	}
+}
+.banner {
+	&__medium {
+		display:none;
+	}
+	&__wide {
+		display:block;
+	}
+}

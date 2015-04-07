@@ -1,0 +1,20 @@
+extends ./include/layout.jade
+
+block vars
+  - var isCompiled = false
+
+block title
+  title Комионлайн Precompiled
+
+block styles
+  link(rel='stylesheet', href='css/normalize.css')
+  link(rel='stylesheet', href='css/bp-begin.css')
+  link(rel='stylesheet', href='css/main.css')
+  link(rel='stylesheet', href='css/bp-tail.css')
+  //- link(rel='stylesheet', href='css/main.gte768.css')
+  //- link(rel='stylesheet', href='css/main.gte1000.css')
+
+block scripts_bottom
+  script(src='js/dev/server-poll.js')
+  script(src='js/plugins.js')
+  script(src='js/main.js')
